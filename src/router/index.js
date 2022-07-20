@@ -6,6 +6,9 @@ import DataBindingInputNumber from '../views/DataBindingInputNumber.vue'
 import DataBindingInputTextarea from '../views/DataBindingInputTextarea.vue'
 import DataBindingSelect from '../views/DataBindingSelect.vue'
 import DataBindingCheckbox from '../views/DataBindingCheckbox.vue'
+import DataBindingRadio from '../views/DataBindingRadio.vue'
+import DataBindingAttribue from '../views/DataBindingAttribue.vue'
+import DataBindingButton from '../views/DataBindingButton.vue'
 
 const routes = [
   {
@@ -50,6 +53,21 @@ const routes = [
     path: '/databindingcheckbox',
     name: 'DatabidingCheckbox',
     component: DataBindingCheckbox
+  },
+  {
+    path: '/databindingradio',
+    name: 'DataBindingRadio',
+    component: DataBindingRadio
+  },
+  {
+    path: '/databindingattribue',
+    name: 'DataBindingAttribue',
+    component: DataBindingAttribue
+  },
+  {
+    path: '/databindingbutton',
+    name: 'DataBindingButton',
+    component: DataBindingButton
   }
 ]
 
