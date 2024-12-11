@@ -5,21 +5,27 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>03-02</title>
+  <title>03-07</title>
 </head>
 <body>
   <div id="app">
-    <h2>{{message}}</h2>
-    <h2 v-text="message"></h2>
+    <!--
+      v-model.lazy // 입력폼에서 다른 요소로 포커스가 이동하는 이벤트가 발생할 때 입력한 값을 데이터와 동기화
+      v-model.number // 숫자가 입려될 경우 number 타입의 값으로 자동 형변환되어 데이터 옵션 값으로 반영
+      v-model.trim // 문자열의 앞뒤 공백을 자동으로 제거
+    -->
+    <input type="text" v-model.number="num" /><br />
+    <p>입력된 수: <span>{{num}}</span></p>
   </div>
   <!-- PageScript -->
   <script type="text/javascript" src="https://unpkg.com/vue"></script>
   <script type="text/javascript">
-    var model = {message: "Hello Vue3!"};
     var vm = Vue.createApp({
       name: "App",
       data() {
-        return model;
+        return {
+          num: 0
+        }
       }
     }).mount('#app')
   </script>

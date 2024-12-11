@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>03-15</title>
+  <style>
+    #list {width: 600px; border:1px solid black; border-collapse:collapse;}
+    #list td, #list th {border:1px solid black; text-align:center;}
+    #list > thead > tr {color:yellow; background-color:purple;}
+    .divider {height:2px; background-color:gray;}
+  </style>
+</head>
+<body>
+<div id="app">
+  <table id="list">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>전화번호</th>
+      </tr>
+    </thead>
+    <tbody id="contacts">
+      <template v-for="(contact, index) in contacts" :key="contact.no">
+        <tr>
+          <td>{{contact.no}}</td>
+          <td>{{contact.name}}</td>
+          <td>{{contact.tel}}</td>
+        </tr>
+        <tr class="divider" v-if="index % 4 === 3">
+          <td colspan="3"></td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+</div>
+  <!-- PageScript -->
+  <script type="text/javascript" src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return {
+          "contacts": [
+            {"no": 1011, "name": "RM", "tel": "010-1234-1234"},
+            {"no": 1012, "name": "RM1", "tel": "010-1234-1234"},
+            {"no": 1013, "name": "RM2", "tel": "010-1234-1234"},
+            {"no": 1014, "name": "RM3", "tel": "010-1234-1234"},
+            {"no": 1015, "name": "RM4", "tel": "010-1234-1234"},
+            {"no": 1016, "name": "RM5", "tel": "010-1234-1234"},
+            {"no": 1017, "name": "RM6", "tel": "010-1234-1234"},
+          ]
+        }
+      }
+    }).mount('#app')
+  </script>
+  <!-- //PageScript -->
+</body>
+</html>

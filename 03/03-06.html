@@ -5,21 +5,24 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>03-02</title>
+  <title>03-06</title>
 </head>
 <body>
   <div id="app">
-    <h2>{{message}}</h2>
-    <h2 v-text="message"></h2>
+    <p>위의 내용에 동의하십닊까?</p>
+    <input type="checkbox" v-model="agree" true-value="yes" false-value="no" />
+    <hr />
+    <p>선택된 값: {{agree}}</p>
   </div>
   <!-- PageScript -->
   <script type="text/javascript" src="https://unpkg.com/vue"></script>
   <script type="text/javascript">
-    var model = {message: "Hello Vue3!"};
     var vm = Vue.createApp({
       name: "App",
       data() {
-        return model;
+        return {
+          agree: "no"
+        }
       }
     }).mount('#app')
   </script>
