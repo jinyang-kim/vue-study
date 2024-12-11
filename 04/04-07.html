@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>04-07</title>
+</head>
+<body>
+<div id="app">
+  <p>x : <input type="text" v-model.number="x" /></p>
+  <p>y : <input type="text" v-model.number="y" /></p>
+  <p>덧셈 결과{{sum}}</p>
+</div>
+<!-- PageScript -->
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+  var vm = Vue.createApp({
+    name: "App",
+    data() {
+      return {
+        x: 0,
+        y: 0
+      }
+    },
+    computed: {
+      sum() {
+        let result = Number(this.x) + Number(this.y);
+        if (isNaN(result)) return 0;
+        else return result;
+      }
+    }
+  }).mount('#app')
+</script>
+<!-- //PageScript -->
+</body>
+</html>

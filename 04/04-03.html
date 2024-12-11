@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>04-03</title>
+</head>
+<body>
+<div id="app">
+  <p>1보다 큰수 : <input id="a" type="text" v-model.number="num" /></p>
+  <br />
+  <p>1부터 입력한 값까지의 합 : <span>{{sum}}</span><br /></p>
+  <p>1부터 입력한 값까지의 합 : <span>{{sum}}</span><br /></p>
+  <p>1부터 입력한 값까지의 합 : <span>{{sum}}</span><br /></p>
+</div>
+<!-- PageScript -->
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+  var vm = Vue.createApp({
+    name: "App",
+    data() {
+      return {
+        num: 0
+      }
+    },
+    // computed 기존 데이터를 이용해 일기 전용의 값을 만들어내기 위해 자주 사용
+    computed: {
+      sum() {
+        console.log("## num : " + this.num);
+        var n = parseInt(this.num);
+        if (Number.isNaN(n)) return 0;
+        return (n * (n + 1)) / 2
+      }
+    }
+  }).mount('#app')
+</script>
+<!-- //PageScript -->
+</body>
+</html>
