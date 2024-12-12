@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>05-14</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li>마우스 왼쪽만 클릭 : 1씩 증가</li>
+    <li>CTRL + 왼쪽 클릭 : 10씩 증가</li>
+    <li>CTRL + ALT + 왼쪽 클릭 : 100씩 증가</li>
+  </ul>
+  <!-- exact 정확하게 일치하는 조합일때 실행 -->
+  <button @click.exact="num=num+1"
+          @click.ctrl.exact="num=num+10"
+          @click.alt.ctrl.exact="num=num+100">클릭하세요
+  </button>
+  <br/>
+  <br/>
+  <p>카운트 : {{num}}</p>
+</div>
+<!-- PageScript -->
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="https://unpkg.com/axios"></script>
+<script type="text/javascript" src="https://unpkg.com/lodash"></script>
+<script type="text/javascript">
+  const BASEURL = "https://contactsvc.bmaster.kro.kr";
+  var vm = Vue.createApp({
+    name: "App",
+    data() {
+      return {
+        num: 0
+      }
+    }
+  }).mount('#app')
+</script>
+<!-- //PageScript -->
+</body>
+</html>

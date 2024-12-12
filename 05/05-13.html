@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>05-13</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+<div id="app">
+  <div class="container"
+       style="position:absolute; top:0; left:0; bottom:0; right:0;"
+       @contextmenu.prevent
+       @click.left="if(currentIndex > 0) currentIndex--;"
+       @click.right="if(currentIndex < itemList.length-1) currentIndex++;"
+       @click.ctrl.left="currentIndex=0"
+       @click.ctrl.right="currentIndex=itemList.length-1"
+  >
+    <div>
+      <p>- 왼쪽버튼 : 위로</p>
+      <p>- 오른쪽 버튼 : 아래로</p>
+      <p>- CTRL + 왼쪽 버튼 : 처음으로</p>
+      <p>- CTRL + 오른쪽 버튼 : 마지막으로</p>
+    </div>
+    <hr />
+    <ul class="list-group">
+      <li class="list-group-item"
+          :class="index === currentIndex ? 'active' : ''"
+          v-for="(item, index) in itemList"
+          :key="item"
+      >
+        {{item}}
+        <span v-if="index === currentIndex" className="float-right badge badge-secondary">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- PageScript -->
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="https://unpkg.com/axios"></script>
+<script type="text/javascript" src="https://unpkg.com/lodash"></script>
+<script type="text/javascript">
+  const BASEURL = "https://contactsvc.bmaster.kro.kr";
+  var vm = Vue.createApp({
+    name: "App",
+    data() {
+      return {
+        itemList: ["item", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9"],
+        currentIndex: 0
+      }
+    }
+  }).mount('#app')
+</script>
+<!-- //PageScript -->
+</body>
+</html>
