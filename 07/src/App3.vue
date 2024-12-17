@@ -14,7 +14,7 @@
 import CheckboxItem from '@/components/CheckboxItem2.vue';
 import Idol from '@/Idol.js';
 export default {
-  name: 'App',
+  name: 'App3',
   components: { CheckboxItem },
   data() {
     return {

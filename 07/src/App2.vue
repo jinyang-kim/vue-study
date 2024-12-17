@@ -14,7 +14,7 @@
 import CheckboxItem from '@/components/CheckboxItem2.vue';
 
 export default {
-  name: 'App',
+  name: 'App2',
   components: { CheckboxItem },
   data() {
     return {
