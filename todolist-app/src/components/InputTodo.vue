@@ -2,7 +2,7 @@
   <div class="row mb-3">
     <div class="col">
       <div class="input-group">
-        <input id="msg" type="text" class="form-control" name="msg" placeholder="할 일을 여기에 입력해 주세요" v-model.trim="todo" @keyup.enter="addTodoHandler" />
+        <input id="msg" type="text" class="form-control" name="msg" placeholder="할 일을 여기에 입력해 주세요" v-model.trim="todo" @keyup.enter="addTodoHanlder" />
         <button class="btn btn-primary input-group-addon" @click="addTodoHanlder">추가</button>
       </div>
     </div>
