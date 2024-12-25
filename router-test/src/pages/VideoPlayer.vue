@@ -33,23 +33,38 @@ export default {
     const playerRef = ref(null);
     const currentRoute = useRoute();
     const router = useRouter();
+    let videoInfo, currentIndex, prevVideoId, nextVideoId;
 
-    let videoInfo = reactive({
+    videoInfo = reactive({
       video: videos.find((video) => video.id === currentRoute.params.id)
     });
+
+    const getNavId = (to) => {
+      videoInfo.video = videos.find((video) => video.id === to.params.id);
+      currentIndex = videos.findIndex((video) => video.id === videoInfo.video.id);
+      prevVideoId = videos[currentIndex-1] ? videos[currentIndex-1].id : null;
+      nextVideoId = videos[currentIndex+1] ? videos[currentIndex+1].id : null;
+    }
+
+    // 마운트되었을 때 현재의 라우트 정보를 이용해 이전, 다음 ID 획득
+    getNavId(currentRoute);
+
     const stopVideo = () => {
       playerRef.value.player.stopVideo();
-      router.push('/videos');
+      router.push({name: 'videos'});
+      //router.push('/videos');
     }
     const playNext = () => {
       const index = videos.findIndex((video) => video.id === videoInfo.video.id);
       const nextVideo = videos[index+1];
       if(nextVideo) {
         videoInfo.video = nextVideo;
-        router.push('/videos/' + nextVideo.id);
+        router.push({name: 'videos/id', params: {id: nextVideo.id}});
+        //router.push('/videos/' + nextVideo.id);
       } else {
         videoInfo.video = videos[0];
-        router.push('/videos/' + videos[0].id);
+        router.push({name: 'videos/id', params: {id: videos[0].id}});
+        //router.push('/videos/' + videos[0].id);
       }
     }
     const playPrev = () => {
@@ -57,7 +72,8 @@ export default {
       const prevVideo = videos[index-1];
       if(prevVideo) {
         videoInfo.video = prevVideo;
-        router.push('/videos/' + prevVideo.id);
+        router.push({name: 'videos/id', params: {id: prevVideo.id}});
+        //router.push('/videos/' + prevVideo.id);
       }
     }
 

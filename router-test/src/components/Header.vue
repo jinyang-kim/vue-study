@@ -6,16 +6,20 @@
     <div :class="navClass">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link to="/" class="nav-link">홈</router-link>
+          <router-link :to="{name: 'home'}" class="nav-link">홈</router-link>
+          <!--<router-link to="/" class="nav-link">홈</router-link>-->
         </li>
         <li class="nav-item">
-          <router-link to="/about" class="nav-link">소개</router-link>
+          <router-link :to="{name: 'about'}" class="nav-link">소개</router-link>
+          <!--<router-link to="/about" class="nav-link">소개</router-link>-->
         </li>
         <li class="nav-item">
-          <router-link to="/members" class="nav-link">멤버</router-link>
+          <router-link :to="{name: 'members'}" class="nav-link">멤버</router-link>
+          <!--<router-link to="/members" class="nav-link">멤버</router-link>-->
         </li>
         <li class="nav-item">
-          <router-link to="/videos" class="nav-link">영상</router-link>
+          <router-link :to="{name: 'videos'}" class="nav-link">영상</router-link>
+          <!--<router-link to="/videos" class="nav-link">영상</router-link>-->
         </li>
       </ul>
     </div>
