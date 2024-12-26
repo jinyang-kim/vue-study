@@ -1,12 +1,13 @@
 import {createRouter, createWebHistory, isNavigationFailure} from 'vue-router';
 
 // 지연 로딩 적용
-const Home = () => import('@/pages/Home.vue');
-const About = () => import('@/pages/About.vue');
-const Members = () => import('@/pages/Members.vue');
-const MemberInfo = () => import('@/pages/MemberInfo.vue');
-const Videos = () => import('@/pages/Videos.vue');
-const VideoPlayer = () => import('@/pages/VideoPlayer.vue');
+const Home = () => import(/* webpackChunkName: "home" */ '@/pages/Home.vue');
+const About = () => import(/* webpackChunkName: "home" */ '@/pages/About.vue');
+const Members = () => import(/* webpackChunkName: "members" */ '@/pages/Members.vue');
+const MemberInfo = () => import(/* webpackChunkName: "members" */ '@/pages/MemberInfo.vue');
+const Videos = () => import(/* webpackChunkName: "videos" */ '@/pages/Videos.vue');
+const VideoPlayer = () => import(/* webpackChunkName: "videos" */ '@/pages/VideoPlayer.vue');
+const NotFound = () => import(/* webpackChunkName: "home" */ '@/pages/NotFound.vue');
 
 //import Home from "@/pages/Home.vue";
 //import About from "@/pages/About.vue";
@@ -15,7 +16,7 @@ const VideoPlayer = () => import('@/pages/VideoPlayer.vue');
 //import Videos from "@/pages/Videos.vue";
 //import VideoPlayer from '@/pages/VideoPlayer.vue';
 
-import NotFound from '@/pages/NotFound.vue';
+//import NotFound from '@/pages/NotFound.vue';
 
 const membersIdGuard = (to, from) => {
   // members/:id 경로는 반드시 이전 경로가 /members, /members:id인 경우에만 내비게이션 허용
