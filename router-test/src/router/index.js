@@ -1,11 +1,21 @@
 import {createRouter, createWebHistory, isNavigationFailure} from 'vue-router';
 
-import Home from "@/pages/Home.vue";
-import About from "@/pages/About.vue";
-import Members from "@/pages/Members.vue";
-import MemberInfo from "@/pages/MemberInfo.vue";
-import Videos from "@/pages/Videos.vue";
-import VideoPlayer from '@/pages/VideoPlayer.vue';
+// 지연 로딩 적용
+const Home = () => import('@/pages/Home.vue');
+const About = () => import('@/pages/About.vue');
+const Members = () => import('@/pages/Members.vue');
+const MemberInfo = () => import('@/pages/MemberInfo.vue');
+const Videos = () => import('@/pages/Videos.vue');
+const VideoPlayer = () => import('@/pages/VideoPlayer.vue');
+
+//import Home from "@/pages/Home.vue";
+//import About from "@/pages/About.vue";
+//import Members from "@/pages/Members.vue";
+//import MemberInfo from "@/pages/MemberInfo.vue";
+//import Videos from "@/pages/Videos.vue";
+//import VideoPlayer from '@/pages/VideoPlayer.vue';
+
+import NotFound from '@/pages/NotFound.vue';
 
 const membersIdGuard = (to, from) => {
   // members/:id 경로는 반드시 이전 경로가 /members, /members:id인 경우에만 내비게이션 허용
@@ -25,7 +35,8 @@ const router = createRouter({
       path: "/members/:id",
       name: "members/id",
       component: MemberInfo,
-      beforeEnter: membersIdGuard
+      beforeEnter: membersIdGuard,
+      props: true
     },
     {
       path: "/videos",
@@ -40,6 +51,11 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path: '/:paths(.*)*',
+      name: 'NotFound',
+      component: NotFound
+    }
   ]
 })
 

@@ -20,10 +20,13 @@ import members from '@/data-sample/members.json';
 
 export default {
   name: "MemberInfo",
-  setup() {
-    const currentRoute = useRoute();
-    const id = parseInt(currentRoute.params.id, 10);
-    const member = members.find((member) => member.id === id);
+  props: ['id'],
+  setup(props) {
+    // router props 전달 안하는 경우
+    //const currentRoute = useRoute();
+    //const id = parseInt(currentRoute.params.id, 10);
+    //const member = members.find((member) => member.id === id);
+    const member = members.find((member) => member.id === parseInt(props.id, 10));
 
     return {member};
   }
