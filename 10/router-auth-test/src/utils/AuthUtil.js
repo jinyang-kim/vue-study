@@ -14,6 +14,7 @@ const pathsToRoles = [
 // userInfo가 null이면 로컬 스토리지 삭제
 const setUserInfo = (userInfo) => {
   if(userInfo && userInfo.authenticated) {
+    // btoa Base64 인코딩된 문자열을 반환
     window.localStorage.setItem("userInfo", btoa(JSON.stringify(userInfo)));
   } else {
     window.localStorage.removeItem("userInfo");
@@ -25,6 +26,7 @@ const getUserInfo = () => {
   if(!strUserInfo) {
     return {authenticated: false};
   } else {
+    // atob Base64 인코딩된 문자열 디코딩
     return JSON.parse(window.atob(strUserInfo));
   }
 }
@@ -74,7 +76,7 @@ const isMatchToRoles = (reqPath) => {
       }
     }
 
-    return isAccessible
+    return isAccessible;
   }
 }
 
